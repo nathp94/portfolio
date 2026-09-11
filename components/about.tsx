@@ -3,24 +3,16 @@ import { url } from "@/lib/basepath";
 import { Section } from "@/components/section";
 
 export function About() {
-  const hasPhoto = site.photo !== null;
   return (
     <Section id="about" label="about">
-      <div
-        className={
-          hasPhoto
-            ? "grid gap-10 md:grid-cols-[11rem_1fr] md:items-start"
-            : ""
-        }
-      >
-        {site.photo ? (
-          <img
-            src={url(site.photo)}
-            alt={`Portrait de ${site.name}`}
-            className="aspect-square w-full max-w-[11rem] border border-hairline object-cover grayscale"
-          />
-        ) : null}
-        <div className={hasPhoto ? "min-w-0 prose" : "prose"}>
+      {site.photo ? (
+        <img
+          src={url(site.photo)}
+          alt={`Portrait de ${site.name}`}
+          className="float-left mb-4 mr-6 aspect-square w-[11rem] border border-hairline object-cover grayscale"
+        />
+      ) : null}
+      <div className="prose">
           <p>
             Je suis étudiant·e en [master data science / statistique], et je
             consigne ici les projets, les expériences et les lectures qui
@@ -38,8 +30,7 @@ export function About() {
             est un terrain d'entraînement pour ces deux questions.
           </p>
         </div>
-      </div>
-      <p className="mt-10 font-mono text-xs text-muted">
+      <p className="mt-10 clear-left font-mono text-xs text-muted">
         {site.location} · {site.domain} · {site.availability}
       </p>
     </Section>
