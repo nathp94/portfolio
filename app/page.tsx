@@ -7,18 +7,26 @@ import { getNotes, getWork } from "@/lib/content";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-3xl px-6 sm:px-10">
-      <About />
+    <main className="mx-auto max-w-5xl px-6 sm:px-10">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start">
+        {/* Colonne gauche : présentation */}
+        <div>
+          <About />
+        </div>
 
-      <Section id="work" label="selected work">
-        <WorkList items={getWork()} />
-      </Section>
+        {/* Colonne droite : travaux, notes, contact */}
+        <div className="flex flex-col gap-16">
+          <Section id="work" label="selected work">
+            <WorkList items={getWork()} />
+          </Section>
 
-      <Section id="notes" label="notes / experiments">
-        <NoteList items={getNotes()} />
-      </Section>
+          <Section id="notes" label="notes / experiments">
+            <NoteList items={getNotes()} />
+          </Section>
 
-      <Contact />
+          <Contact />
+        </div>
+      </div>
     </main>
   );
 }

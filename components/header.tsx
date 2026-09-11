@@ -11,7 +11,7 @@ const nav = [
 export function Header() {
   return (
     <header className="border-b border-hairline">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-end justify-between gap-x-10 gap-y-2 px-6 pb-14 pt-14 sm:px-10">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-end justify-between gap-x-10 gap-y-2 px-6 pb-14 pt-14 sm:px-10">
         <div>
           <p className="font-serif text-2xl leading-none tracking-tight">
             {site.name}

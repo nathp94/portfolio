@@ -35,7 +35,7 @@ export default async function WorkPage({
   const content = await renderMdx(item.body);
 
   return (
-    <article className="mx-auto max-w-3xl px-6 pt-14 sm:px-10">
+    <article className="mx-auto max-w-5xl px-6 pt-14 sm:px-10">
       <p className="font-mono text-xs text-muted">
         <Link href="/" className="hover:underline underline-offset-4">
           ← retour

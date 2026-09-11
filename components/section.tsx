@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 
 /**
- * Rubrique de la page d'accueil : étiquette mono au-dessus d'un filet,
- * puis contenu. Les ancres de navigation pointent sur `id`.
+ * Rubrique de la page d'accueil : titre dans une case pleine carrée
+ * (rayons nuls garantis par le style global), filet sous le titre, puis
+ * contenu. Les ancres de navigation pointent sur `id`.
  */
 export function Section({
   id,
@@ -14,10 +15,10 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="mt-16 scroll-mt-16 sm:mt-24">
+    <section id={id} className="scroll-mt-16">
       <div className="mb-10">
-        <h2 className="font-mono text-xs text-muted uppercase tracking-[0.2em]">
-          — {label}
+        <h2 className="inline-block bg-ink px-3 py-1 font-mono text-xs text-paper uppercase tracking-[0.2em]">
+          {label}
         </h2>
         <div className="mt-3 border-t border-hairline" />
       </div>
