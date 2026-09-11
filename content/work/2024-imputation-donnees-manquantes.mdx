@@ -1,0 +1,40 @@
+---
+title: "Imputation robuste de données manquantes"
+year: 2024
+type: "Mémoire — M1"
+summary: "Évaluation d'approches par régression multiple et par échantillonnage sur des données administratives fortement censurées."
+tags: ["python", "pandas", "scikit-learn", "imputation"]
+---
+
+{/*
+  ⚠️ Fichier d'exemple — remplacez le contenu par la description de votre projet.
+*/}
+
+## Problème
+
+Des données administratives présentent des taux de valeurs manquantes très
+variables selon les colonnes, avec un mécanisme de disparition lié aux valeurs
+elles-mêmes. Imputer naïvement (moyenne, médiane) biaise les estimations.
+
+## Approche
+
+Trois familles d'imputation sont comparées :
+
+- imputation par régression simple,
+- imputation multiple à la MICE,
+- imputation par plus proches voisins pondérés.
+
+```python
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+
+imputer = IterativeImputer(max_iter=20, random_state=0)
+X_imputed = imputer.fit_transform(X)
+```
+
+## Résultats
+
+Sur les indicateurs de validation, l'imputation multiple réduit le biais de
+7 points par rapport à la moyenne naïve, au prix d'une variance accrue sur les
+petits échantillons. Le choix final dépend donc de l'usage : estimation
+ponctuelle ou inférence.

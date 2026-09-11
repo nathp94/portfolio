@@ -1,0 +1,49 @@
+---
+title: "Prévision de la consommation électrique française"
+year: 2025
+type: "Projet de recherche"
+summary: "Comparaison d'un modèle de séries temporelles à poids partagés contre une baseline ARIMA, sur dix ans de consommation électrique."
+tags: ["python", "pytorch", "transformers", "statsmodels"]
+---
+
+{/*
+  ⚠️ Fichier d'exemple — remplacez le contenu par la description de votre projet.
+  Le frontmatter (entre les tirets) alimente la liste "Selected Work" ; le corps
+  ci-dessous est la page de détail, accessible via le titre.
+*/}
+
+## Contexte
+
+Ce projet compare deux familles de modèles pour la prévision de la
+consommation électrique française à un horizon de 24 heures : un modèle ARIMA
+hors ligne et un modèle auto-régressif à poids partagés tiré de la
+littérature, entraînés sur dix ans de données horaires.
+
+## Méthode
+
+Les données sont mises en forme en fenêtres de 168 heures en entrée pour une
+fenêtre de 24 heures prédites. La baseline ARIMA est ajustée sur un
+sous-échantillon glissant ; le modèle profond est entraîné par rétropropagation
+sur un découpage entraînement / validation.
+
+```python
+import numpy as np
+from statsmodels.tsa.arima.model import ARIMA
+
+def rmse(y_true, y_pred):
+    return float(np.sqrt(np.mean((y_true - y_pred) ** 2)))
+
+model = ARIMA(series, order=(1, 0, 24))
+```
+
+## Résultats
+
+- arima — rmse 812 mw — ajustement en 4 min
+- poids partagés — rmse 641 mw — entraînement en 2 h
+
+## Bilan
+
+Le gain en précision est net, au prix d'un coût d'entraînement élevé et d'une
+moins grande transparence. Deux questions restent ouvertes : la calibration
+des intervalles de confiance et la prise en compte des ruptures de
+comportement de consommation.
