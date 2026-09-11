@@ -3,9 +3,16 @@ import { url } from "@/lib/basepath";
 import { Section } from "@/components/section";
 
 export function About() {
+  const hasPhoto = site.photo !== null;
   return (
     <Section id="about" label="about">
-      <div className="grid gap-10 md:grid-cols-[11rem_1fr] md:items-start">
+      <div
+        className={
+          hasPhoto
+            ? "grid gap-10 md:grid-cols-[11rem_1fr] md:items-start"
+            : ""
+        }
+      >
         {site.photo ? (
           <img
             src={url(site.photo)}
@@ -13,7 +20,7 @@ export function About() {
             className="aspect-square w-full max-w-[11rem] border border-hairline object-cover grayscale"
           />
         ) : null}
-        <div className="prose">
+        <div className={hasPhoto ? "min-w-0 prose" : "prose"}>
           <p>
             Je suis étudiant·e en [master data science / statistique], et je
             consigne ici les projets, les expériences et les lectures qui
