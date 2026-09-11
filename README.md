@@ -9,7 +9,12 @@ contenu en MDX, déployé sur GitHub Pages via GitHub Actions.
 npm install
 npm run dev        # http://localhost:3000
 npm run typecheck  # vérification TypeScript
+npm run build:static && npm run verify  # export statique + contrôle des liens
 ```
+
+> Note : si la variable d'environnement `GITHUB_REPOSITORY` est définie
+> (elle l'est dans GitHub Actions), le site est servi/localisé sous le chemin
+> de base correspondant (`/portfolio/`). En local, sans variable, tout est à la racine.
 
 ## Ajouter un projet
 
@@ -65,8 +70,8 @@ Après modification, `git push` redéploie le site automatiquement.
 
 ## Déploiement sur GitHub Pages
 
-Le workflow `.github/workflows/deploy.yml` compile le site (`npm run build`
-→ dossier `out/`) et le publie à chaque `push` sur `main`.
+Le workflow `.github/workflows/deploy.yml` compile le site
+(`npm run build:static` → dossier `out/`) et le publie à chaque `push` sur `main`.
 
 Une seule étape manuelle, à faire dans GitHub une fois :
 

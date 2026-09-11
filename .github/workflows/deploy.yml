@@ -24,7 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:static
         # GITHUB_REPOSITORY est déjà défini par GitHub Actions ; la config
         # Next.js en déduit le chemin de base (/portfolio/ par exemple).
       - uses: actions/upload-pages-artifact@v3

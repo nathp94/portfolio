@@ -15,14 +15,18 @@ const basePath = (() => {
   return `/${repo.split("/")[1]}`;
 })();
 
-const nextConfig: NextConfig = {
-  // Export 100 % statique vers le dossier `out/` (requis pour GitHub Pages).
-  output: "export",
+const nextConfig: NextConfig = {};
+
+// Mode export 100 % statique (dimensionné pour GitHub Pages) : activé par
+// `npm run build:static` ou par le workflow GitHub Actions. Le serveur de
+// dev (`npm run dev`) reste, lui, en mode normal.
+if (process.env.STATIC_EXPORT === "1") {
+  nextConfig.output = "export";
   // GitHub Pages ne sert pas les URLs sans slash final.
-  trailingSlash: true,
+  nextConfig.trailingSlash = true;
   // Pages ne peut pas exécuter l'optimiseur d'images de Next.
-  images: { unoptimized: true },
-};
+  nextConfig.images = { unoptimized: true };
+}
 
 if (basePath) {
   nextConfig.basePath = basePath;
