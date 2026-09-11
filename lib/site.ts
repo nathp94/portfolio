@@ -46,7 +46,7 @@ export const site: SiteConfig = {
   email: "jean.dupont@universite.fr",
   github: "https://github.com/jeandupont",
   linkedin: "https://www.linkedin.com/in/jeandupont",
-  photo: null,
+  photo: "/photo.jpg",
   cv: null,
   sourceRepo: null,
 };
