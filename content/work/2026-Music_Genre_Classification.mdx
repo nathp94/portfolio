@@ -1,0 +1,42 @@
+---
+title: "Music Genre Classification with Deep Learning"
+year: 2026
+type: "Deep Learning Project"
+summary: "A comparative study of classical machine learning, convolutional neural networks, and transfer learning for automatic music genre classification on the Free Music Archive dataset."
+tags: ["python", "pytorch", "deep-learning", "cnn", "transfer-learning", "audio", "vggish"]
+---
+
+## Context
+
+This project was developed as part of a **Neural Networks and Deep Learning**
+course and explores **automatic music genre classification** at the intersection
+of audio signal processing and deep learning.
+
+The objective was to classify **30-second music clips into 8 different genres**
+using the **Free Music Archive (FMA Small)** dataset, which contains 8,000
+balanced tracks across Hip-Hop, Pop, Folk, Experimental, Rock, International,
+Electronic, and Instrumental.
+
+Rather than relying on a single modeling approach, the project follows a
+progressive experimental pipeline, starting with classical acoustic features
+and gradually moving toward deeper audio representations.
+
+Several approaches were investigated:
+
+- **Logistic Regression, Random Forest, and a Multi-Layer Perceptron** trained
+  on handcrafted acoustic descriptors such as MFCCs, spectral features, chroma,
+  RMS energy, and tempo;
+- a **Convolutional Neural Network trained from scratch on mel-spectrograms**,
+  allowing the model to learn both temporal and spectral patterns directly from
+  audio representations;
+- an improved CNN using **SpecAugment, Batch Normalization, Dropout, and L2
+  regularization**;
+- a **transfer learning approach using Google's VGGish model**, pre-trained on
+  AudioSet, followed by a lightweight MLP classifier.
+
+## Learn More
+
+The complete methodology, experiments, model architectures, and analysis are
+available in the project's technical report.
+
+[Read the full report (PDF)](/pdfs/Rapport_project_deep_learning.pdf)
