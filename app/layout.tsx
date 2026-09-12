@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
-  description: `Portfolio et notes de ${site.name}, ${site.role}.`,
+  description: `Portfolio de ${site.name}, ${site.role}.`,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

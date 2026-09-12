@@ -39,23 +39,8 @@ print("hello")
 ```
 ```
 
-Le projet apparaît automatiquement dans la section **Selected Work**
+Le projet apparaît automatiquement dans la section **My work**
 (tri par année décroissante), et sa page de détail est accessible via le titre.
-
-## Ajouter une note (expériences, scripts, lectures)
-
-Même principe dans `content/notes/` :
-
-```mdx
----
-title: "Titre de la note"
-date: 2026-03-14              # format ISO : YYYY-MM-DD
-type: "essai"                 # essai · script · visualisation · analyse · lecture
-tags: ["metrics"]
----
-
-Corps de la note…
-```
 
 ## Personnalisation
 
@@ -93,7 +78,6 @@ Le chemin de base se détecte automatiquement à la compilation :
 app/                  Pages (App Router) + styles globaux
 components/           Composants d'interface
 content/work/         Projets sélectionnés (MDX + frontmatter)
-content/notes/        Notes / expériences (MDX + frontmatter)
 lib/site.ts           ⚙️ Configuration personnelle
 lib/content.ts        Lecture et tri des contenus
 lib/mdx.ts            Rendu du corps MDX

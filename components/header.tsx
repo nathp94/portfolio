@@ -4,7 +4,6 @@ import { site } from "@/lib/site";
 const nav = [
   { label: "about", href: "/#about" },
   { label: "work", href: "/#work" },
-  { label: "notes", href: "/#notes" },
   { label: "contact", href: "/#contact" },
 ];
 

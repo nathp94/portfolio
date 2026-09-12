@@ -1,9 +1,8 @@
 import { About } from "@/components/about";
 import { Section } from "@/components/section";
 import { WorkList } from "@/components/work-list";
-import { NoteList } from "@/components/note-list";
 import { Contact } from "@/components/contact";
-import { getNotes, getWork } from "@/lib/content";
+import { getWork } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -14,14 +13,10 @@ export default function Home() {
           <About />
         </div>
 
-        {/* Colonne droite : travaux, notes, contact */}
+        {/* Colonne droite : travaux puis contact */}
         <div className="flex flex-col gap-16">
-          <Section id="work" label="selected work">
+          <Section id="work" label="my work">
             <WorkList items={getWork()} />
-          </Section>
-
-          <Section id="notes" label="notes / experiments">
-            <NoteList items={getNotes()} />
           </Section>
 
           <Contact />
