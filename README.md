@@ -1,6 +1,6 @@
 # Data Scientist Portfolio
 
-A minimal, sober portfolio site for a data scientist — built with **Next.js (App
+A minimal, sober portfolio site built with **Next.js (App
 Router), TypeScript, Tailwind CSS and MDX**. Fully static, no database, no
 backend. Auto-deployed to **GitHub Pages** on every push to `main`.
 
@@ -13,18 +13,6 @@ npm run typecheck       # TypeScript check
 npm run build:static    # static export → ./out
 npm run verify          # check internal links & MDX rendering
 ```
-
-> When the `GITHUB_REPOSITORY` env var is set (as in GitHub Actions), the site
-> is served under the matching base path (`/portfolio/`). Locally, without the
-> var, everything sits at the root.
-
-## Personalize
-
-- Everything about you lives in **`lib/site.ts`** (name, role, links, photo, CV).
-- Projects are plain MDX files in **`content/work/`** — one file per project
-  (frontmatter: `title`, `year`, `type`, `summary`, `tags`, followed by the detail page body).
-- Push to `main` to rebuild and redeploy automatically.
-
 ## Deploy
 
 The workflow `.github/workflows/deploy.yml` builds the static export (`./out`)
