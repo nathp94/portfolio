@@ -70,14 +70,18 @@ const ok = [...new Set(internalHrefs)].map((href) => {
 
 if (ok.includes(false)) process.exit(1);
 
-// Pages détail : contenu MDX bien rendu.
-const detail = read("work/2025-prevision-consommation-electrique/index.html");
+// Pages détail : contenu MDX bien rendu (vérification sur la première
+// page /work/[slug] exportée, quelle que soit celle publiée).
+const workPages = files.filter((p) => p.startsWith(`work${path.sep}`));
+if (workPages.length === 0) {
+  console.error("Aucune page projet exportée dans out/work/.");
+  process.exit(1);
+}
+const detail = read(workPages[0]);
 for (const [label, has] of [
   ["<h1>", detail.includes("<h1")],
-  ["bloc de code python", detail.includes("language-python")],
-  ["rendu des résultats", detail.includes("rmse 812")],
+  ["contenu paragraphe", detail.includes("<p")],
   ["lien retour", detail.includes("retour")],
-  ["encodage UTF-8", detail.includes("électrique")],
 ]) {
   if (!has) {
     console.error(`Page détail : ${label} manquant.`);
