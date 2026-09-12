@@ -1,87 +1,50 @@
-# Portfolio — Data Scientist
+# Data Scientist Portfolio
 
-Site vitrine 100 % statique : Next.js (App Router) + TypeScript + Tailwind CSS,
-contenu en MDX, déployé sur GitHub Pages via GitHub Actions.
+A minimal, sober portfolio site for a data scientist — built with **Next.js (App
+Router), TypeScript, Tailwind CSS and MDX**. Fully static, no database, no
+backend. Auto-deployed to **GitHub Pages** on every push to `main`.
 
-## Développement local
+## Quick start
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run typecheck  # vérification TypeScript
-npm run build:static && npm run verify  # export statique + contrôle des liens
+npm run dev             # local dev server → http://localhost:3000
+npm run typecheck       # TypeScript check
+npm run build:static    # static export → ./out
+npm run verify          # check internal links & MDX rendering
 ```
 
-> Note : si la variable d'environnement `GITHUB_REPOSITORY` est définie
-> (elle l'est dans GitHub Actions), le site est servi/localisé sous le chemin
-> de base correspondant (`/portfolio/`). En local, sans variable, tout est à la racine.
+> When the `GITHUB_REPOSITORY` env var is set (as in GitHub Actions), the site
+> is served under the matching base path (`/portfolio/`). Locally, without the
+> var, everything sits at the root.
 
-## Ajouter un projet
+## Personalize
 
-Créez un fichier dans `content/work/`, par exemple `content/work/2026-mon-projet.mdx` :
+- Everything about you lives in **`lib/site.ts`** (name, role, links, photo, CV).
+- Projects are plain MDX files in **`content/work/`** — one file per project
+  (frontmatter: `title`, `year`, `type`, `summary`, `tags`, followed by the detail page body).
+- Push to `main` to rebuild and redeploy automatically.
 
-```mdx
----
-title: "Titre du projet"
-year: 2026
-type: "Projet de recherche"   # Stage · Mémoire · Perso · ...
-summary: "Description en deux lignes maximum."
-tags: ["python", "pytorch", "statistiques"]
----
+## Deploy
 
-## Contexte
+The workflow `.github/workflows/deploy.yml` builds the static export (`./out`)
+and publishes it to GitHub Pages (`https://<user>.github.io/portfolio/`).
+Done once in the repo settings: **Settings → Pages → Build and deployment → Source → "GitHub Actions"**.
 
-Le corps du fichier est la page de détail (Markdown / MDX, blocs de code
-supportés).
-
-```python
-print("hello")
-```
-```
-
-Le projet apparaît automatiquement dans la section **My work**
-(tri par année décroissante), et sa page de détail est accessible via le titre.
-
-## Personnalisation
-
-Toutes vos données personnelles sont concentrées dans **`lib/site.ts`** :
-nom, rôle, localisation, disponibilité, e-mail, GitHub, LinkedIn, photo, CV.
-Après modification, `git push` redéploie le site automatiquement.
-
-- **Photo** : déposez une image noir et blanc dans `public/` (ex. `photo.jpg`),
-  puis renseignez `photo: "/photo.jpg"` dans `lib/site.ts`. Le rendu est forcé
-  en niveaux de gris.
-- **CV** : déposez `cv.pdf` dans `public/` et renseignez `cv: "/cv.pdf"`.
-
-## Déploiement sur GitHub Pages
-
-Le workflow `.github/workflows/deploy.yml` compile le site
-(`npm run build:static` → dossier `out/`) et le publie à chaque `push` sur `main`.
-
-Une seule étape manuelle, à faire dans GitHub une fois :
-
-1. Créez le dépôt (ex. `portfolio`) et poussez le contenu.
-2. GitHub → **Settings → Pages** → section *Build and deployment* →
-   **Source : "GitHub Actions"**.
-
-Le site est alors disponible à `https://<pseudo>.github.io/portfolio/`.
-
-Le chemin de base se détecte automatiquement à la compilation :
-
-- dépôt `pseudo/portfolio` → `/portfolio/` ;
-- dépôt `pseudo/pseudo.github.io` → racine ;
-- surcharge possible avec la variable d'environnement `BASE_PATH`.
+The base path is auto-detected at build time from `GITHUB_REPOSITORY`
+(`/portfolio/` for project repos, root for `*.github.io` user pages) —
+override it with the `BASE_PATH` env var if needed.
 
 ## Structure
 
 ```
-app/                  Pages (App Router) + styles globaux
-components/           Composants d'interface
-content/work/         Projets sélectionnés (MDX + frontmatter)
-lib/site.ts           ⚙️ Configuration personnelle
-lib/content.ts        Lecture et tri des contenus
-lib/mdx.ts            Rendu du corps MDX
-lib/basepath.ts       Préparation du chemin de base GitHub Pages
-public/               Photo, CV, assets statiques
-.github/workflows/    Déploiement GitHub Pages
+app/                  Pages (App Router) + global styles
+components/           UI components
+content/work/         Projects (MDX + frontmatter)
+lib/site.ts           ⚙️ Personal configuration
+lib/content.ts        Content loading & sorting
+lib/mdx.ts            MDX rendering
+lib/basepath.ts       GitHub Pages base-path handling
+public/               Photo, CV, static assets
+.github/workflows/    GitHub Pages deployment
 ```
