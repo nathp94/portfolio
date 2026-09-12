@@ -143,6 +143,23 @@
   padding: 0;
 }
 
+/* Médias intégrés (PDF, vidéos, iframes) */
+.prose iframe,
+.prose video {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+}
+
+.prose iframe {
+  width: 100%;
+  border: 1px solid var(--color-hairline);
+}
+
+.prose video {
+  background: #000;
+}
+
 .prose blockquote {
   border-left: 2px solid var(--color-hairline);
   padding-left: 1rem;

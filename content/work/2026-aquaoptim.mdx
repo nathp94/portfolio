@@ -1,0 +1,42 @@
+---
+title: "AquaOptim — Détection intelligente de micro-fuites d’eau"
+year: 2026
+type: "Projet d’ingénierie"
+summary: "Conception d’une solution IoT non invasive combinant analyse vibratoire, traitement du signal et apprentissage non supervisé pour détecter les micro-fuites dans les bâtiments tertiaires."
+tags: ["python", "scikit-learn", "iot", "esp32", "mqtt", "react", "typescript", "fastapi"]
+---
+
+## Contexte
+
+AquaOptim est une solution de surveillance hydrique conçue pour détecter
+précocement les micro-fuites d’eau dans les bâtiments tertiaires.
+
+L’objectif est de proposer une alternative non invasive aux compteurs
+classiques et aux systèmes acoustiques industriels : les capteurs sont placés
+directement sur la paroi extérieure des canalisations, sans perçage ni
+interruption du réseau d’eau.
+
+Le principe consiste à mesurer les vibrations produites par l’écoulement,
+extraire leur signature fréquentielle puis utiliser un modèle de détection
+d’anomalies afin d’identifier automatiquement un comportement inhabituel.
+
+## Architecture
+
+Le système repose sur une chaîne IoT complète allant du capteur jusqu’à
+l’interface de supervision :
+
+1. **Acquisition** — un ESP32 récupère les mesures d’un capteur vibratoire fixé
+   sur la canalisation.
+2. **Edge computing** — une première analyse fréquentielle est réalisée au plus
+   près du capteur afin de réduire le volume de données transmis.
+3. **Transmission** — les mesures et indicateurs sont envoyés au format JSON
+   via MQTT.
+4. **Traitement** — les signaux sont transformés en caractéristiques temporelles
+   et fréquentielles puis analysés par un modèle Isolation Forest.
+5. **Supervision** — un dashboard permet de suivre l’état du réseau, consulter
+   les anomalies, leur historique et la zone concernée.
+
+L’interface a été développée avec **React, TypeScript et Vite**, avec un backend
+**FastAPI** et une persistance **SQLite**. Le pipeline IoT a également été conçu
+autour de MQTT, Telegraf et InfluxDB.
+
