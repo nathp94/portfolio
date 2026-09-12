@@ -15,7 +15,7 @@ export default function Home() {
 
         {/* Colonne droite : travaux puis contact */}
         <div className="flex flex-col gap-16">
-          <Section id="work" label="my work">
+          <Section id="work" label="projects">
             <WorkList items={getWork()} />
           </Section>
 
