@@ -38,14 +38,14 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: "Jean Dupont",
-  role: "data scientist · apprenti chercheur",
+  name: "Nathan Pégé",
+  role: "data scientist · étudiant ingénieur",
   location: "Paris, France",
-  domain: "séries temporelles · statistiques · causalité",
-  availability: "disponible pour un stage — 2026",
-  email: "jean.dupont@universite.fr",
-  github: "https://github.com/jeandupont",
-  linkedin: "https://www.linkedin.com/in/jeandupont",
+  domain: "machine learning · séries temporelles · computer vision",
+  availability: "disponible pour un stage de césure — septembre 2026",
+  email: "nathan.pege@efrei.net",
+  github: "https://github.com/nathp94",
+  linkedin: "https://www.linkedin.com/in/nathan-pégé",
   photo: "/photo.jpg",
   cv: null,
   sourceRepo: null,
