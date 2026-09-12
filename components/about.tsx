@@ -13,26 +13,24 @@ export function About() {
             className="aspect-square w-[11rem] border border-hairline object-cover grayscale"
           />
         ) : null}
-        <div className="prose">
+        <div className="prose prose-about">
           <p>
-            Je suis étudiant ingénieur en Data Science & IA à l'EFREI, et je
-            consigne ici les projets, les défis et les compétitions qui
-            jalonnent mon parcours de data scientist.
+            I am a Data Science & AI engineering student at EFREI, 
+            documenting the projects, challenges, and competitions 
+            that shape my journey as a data scientist.
           </p>
           <p>
-            Je travaille principalement sur le machine learning appliqué, la
-            détection d'anomalies sur séries temporelles et la vision par
-            ordinateur, avec un souci constant d'efficacité, des pipelines
-            MLOps structurés, du code optimisé et des outils interactifs.
-            Distingué lors de plusieurs concours (Innovation Project EFREI,
-            Hackathon Colas), j'aime concevoir des modèles performants capables
-            de répondre à des problématiques concrètes.
+            My work focuses primarily on applied machine learning, 
+            time-series anomaly detection, and computer vision, 
+            with a strong emphasis on efficiency, structured MLOps pipelines, 
+            optimized code, and interactive tools. Recognized in several 
+            competitions (EFREI Innovation Project, Colas Hackathon), 
+            I enjoy designing high-performing models to tackle real-world problems.
           </p>
           <p>
-            Je m'intéresse aussi à la mise en production et à la valorisation
-            des données : comment transformer des données complexes en
-            solutions fiables et explicables. Ce site est une vitrine de mes
-            travaux et de mes expérimentations.
+            I am also keen on deployment and data value creation—turning complex 
+            data into reliable, explainable solutions. This website serves 
+            as a showcase for my projects and experiments.
           </p>
         </div>
       </div>

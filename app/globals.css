@@ -71,6 +71,11 @@
   line-height: 1.75;
 }
 
+/* Section About : police légèrement réduite pour raccourcir la rubrique. */
+.prose-about {
+  font-size: 0.9375rem;
+}
+
 .prose p {
   margin: 0 0 1.25rem;
 }
